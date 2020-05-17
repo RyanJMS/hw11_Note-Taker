@@ -9,31 +9,32 @@ class Service {
   }
 
   receive(note, callback) {
-      fs.readFile("./db/db.json", "utf8", (err, data) => {
-          if (err) throw err;
-          let getData = JSON.parse(data);
-          getData.push(note);
+    fs.readFile("./db/db.json", "utf8", (err, data) => {
+      if (err) throw err;
+      let getData = JSON.parse(data);
+      getData.push(note);
 
-    fs.writeFile("./db/db,json", JSON.stringify(getData), err => {
+      fs.writeFile("./db/db,json", JSON.stringify(getData), (err) => {
         if (err) throw err;
-    
-    return callback(getData);
-    })
-})
 
-    delete(index, callback) {
-        fs.readFile("./db/db.json", "utf8", (err, data) => {
-            if (err) throw err;
+        return callback(getData);
+      });
+    });
+  }
 
-        let getData = JSON.parse(data);
-        getData.splice(index, 1);
+  delete(index, callback) {
+    fs.readFile("./db/db.json", "utf8", (err, data) => {
+      if (err) throw err;
 
-        fs.writeFile ("./db/db.json", JSON.stringify(getData), err => {
-            if (err) throw err;
-        
-        return callback(getData)
-    })
-})
-    }}}
+      let getData = JSON.parse(data);
+      getData.splice(index, 1);
 
-module.exports = Service
+      fs.writeFile("./db/db.json", JSON.stringify(getData), (err) => {
+        if (err) throw err;
+        return callback(getData);
+      });
+    });
+  }
+}
+
+module.exports = Service;
