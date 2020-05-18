@@ -14,7 +14,7 @@ class Service {
       let getData = JSON.parse(data);
       getData.push(note);
 
-      fs.writeFile("./db/db,json", JSON.stringify(getData), (err) => {
+      fs.writeFile("./db/db.json", JSON.stringify(getData), (err) => {
         if (err) throw err;
 
         return callback(getData);
