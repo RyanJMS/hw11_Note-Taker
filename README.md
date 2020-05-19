@@ -9,4 +9,4 @@ https://note-taker-rmjs.herokuapp.com/
 
 # Demo Gif
 
-![](demo.gif)
+![](/images/demo.gif)
